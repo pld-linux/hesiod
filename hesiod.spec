@@ -9,13 +9,6 @@ Patch0:		%{name}-3.0.2-shlib.patch
 Patch1:		%{name}-3.0.2-env.patch
 Patch2:		%{name}-3.0.2-str.patch
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,13 +30,6 @@ komputerami.
 Summary:	Headers and development documentation for Hesiod
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja programisty do hesiod.
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
@@ -58,13 +44,6 @@ u©ywaj╠cych Hesiod oraz dokumentacjЙ programisty.
 Summary:	Hesiod static library
 Summary(pl):	Biblioteka statyczna Hesiod
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static

@@ -1,87 +1,84 @@
-Name: hesiod
-Version: 3.0.2
-Release: 15
-Source: ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/hesiod-%{version}.tar.gz
-Patch0: hesiod-3.0.2-shlib.patch
-Patch1: hesiod-3.0.2-env.patch
-Patch2: hesiod-3.0.2-str.patch
-Summary: Hesiod libraries and sample programs.
-Group: System Environment/Libraries
-License: MIT
-Buildroot: %{_tmppath}/hesiod-root
+Summary:	Hesiod libraries and sample programs
+Summary(pl):	Biblioteki i programy przyk≥adowe do hesiod
+Name:		hesiod
+Version:	3.0.2
+Release:	15
+License:	MIT
+Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz
+Patch0:		%{name}-3.0.2-shlib.patch
+Patch1:		%{name}-3.0.2-env.patch
+Patch2:		%{name}-3.0.2-str.patch
+Group:		Libraries
+Group(de):	Libraries
+Group(es):	Bibliotecas
+Group(fr):	Librairies
+Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	‚…¬Ã…œ‘≈À…
+Group(uk):	‚¶¬Ã¶œ‘≈À…
+Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Hesiod is a system which uses existing DNS functionality to provide access
-to databases of information that changes infrequently.  It is often used to
-distribute information kept in the /etc/passwd, /etc/group, and /etc/printcap
-files, among others.
+Hesiod is a system which uses existing DNS functionality to provide
+access to databases of information that changes infrequently. It is
+often used to distribute information kept in the /etc/passwd,
+/etc/group, and /etc/printcap files over a network, eliminating the
+need to ensure synchronize the files among multiple hosts.
+
+%description -l pl
+Hesiod jest systemem uøywaj±cym istniej±cej funkcjonalno∂ci DNS do
+zapewniania dostÍpu do baz informacji zmieniaj±cych siÍ niezbyt
+czÍsto. Jest przewaønie uøywany do rozprowadzania informacji
+trzymanych w /etc/passwd, /etc/group, /etc/printcap i podobnych po
+sieci, eliminuj±c potrzebÍ synchronizacji plikÛw miÍdzy wieloma
+komputerami.
 
 %package devel
-Summary: Development libraries and headers for Hesiod
-Group: Development/Libraries
-Requires: hesiod = %{version}-%{release}
+Summary:	Headers and development documentation for Hesiod
+Summary(pl):	Pliki nag≥Ûwkowe i dokumentacja programisty do hesiod.
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Hesiod is a system which uses existing DNS functionality to provide access
-to databases of information that changes infrequently.  It is often used to
-distribute information which might otherwise kept in the /etc/passwd,
-/etc/group, and /etc/printcap files over a network, eliminating the need to
-ensure synchronize the files among multiple hosts.  This package contains
-the header files and libraries required for building programs which use Hesiod.
+This package contains the header files required for building programs
+which use Hesiod and some devolopment documentation.
 
-%changelog
-* Fri Oct 26 2001 Nalin Dahyabhai <nalin@redhat.com> 3.0.2-15
-- actually set the soname in the shared library (ld doesn't automatically
-  set the soname to the output file's name, oops)
+%description devel -l pl
+Ten pakiet zawiera pliki nag≥Ûwkowe potrzebne do budowania programÛw
+uøywaj±cych Hesiod oraz dokumentacjÍ programisty.
 
-* Fri Oct  5 2001 Nalin Dahyabhai <nalin@redhat.com> 3.0.2-14
-- on second thought, put the shared library back in, using a soversion of 0
-  to have a chance at providing compatibility with apps linked dynamically
-  on other distributions
-- make -devel depend on the same version of the main package
+%package static
+Summary:	Hesiod static library
+Summary(pl):	Biblioteka statyczna Hesiod
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
+Requires:	%{name}-devel = %{version}-%{release}
 
-* Wed Oct  3 2001 Nalin Dahyabhai <nalin@redhat.com>
-- remove the shared library patch -- different packages with shared libraries
-  tend to use different sonames, so we'd run inevitably run into problems
+%description static
+This package contains static version of Hesiod library.
 
-* Thu Aug 21 2001 Nalin Dahyabhai <nalin@redhat.com>
-- remove pre and post scripts -- authconfig handles that stuff now
-- add the hesiod man page back in, as bind-devel doesn't provide it any more
-
-* Wed Jan 17 2001 Jeremy Katz <jlkatz@eos.ncsu.edu>
-- hesiod-devel requires hesiod (bug #128)
-
-* Thu Sep 14 2000 Jeremy Katz <jlkatz@eos.ncsu.edu>
-- remove hesiod man page from hesiod-devel as it conflicts with the one 
-  from bind-devel
-
-* Thu Sep 14 2000 Jeremy Katz <jlkatz@eos.ncsu.edu>
-- use rpm macros where possible and FHS-ify
-- split into main and devel packages
-- add back requires for nscd
-
-* Fri Jul 28 2000 Jeremy Katz <jlkatz@eos.ncsu.edu>
-- rebuild in new environment
-
-* Thu Mar 16 2000 Jeremy Katz <jlkatz@unity.ncsu.edu>
-- rebuild in new environment
-
-* Thu Sep  2 1999 Nalin Dahyabhai <nsdahya1@eos.ncsu.edu>
-- removed dependency on nscd
-- changed requires: nscd back to caching-nameserver
-
-* Mon May 17 1999 Nalin Dahyabhai <nsdahya1@eos.ncsu.edu>
-- started changelog
-- moved addition of hesiod to nsswitch.conf to this package because we
-  no longer use a separate libnss_hesiod.so
-- changed requires: caching-nameserver to nscd
-- added post-install script snippet to activate nscd on install
+%description static -l pl
+Ten pakiet zawiera statyczn± wersjÍ biblioteki Hesiod.
 
 %prep
 %setup -q
-%patch0 -p1 -b .shlib
-%patch1 -p1 -b .env
-%patch2 -p1 -b .str
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+
 for manpage in *.3; do
 	if grep -q '^\.so man3/hesiod.3' $manpage ; then
 		echo .so hesiod.3 > $manpage
@@ -96,23 +93,34 @@ done
 
 %build
 %configure 
-make
+%{__make}
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
+gzip -9nf README NEWS
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files
-%defattr(-,root,root)
-%doc README NEWS
-%{_bindir}/hesinfo
+%defattr(644,root,root,755)
+%doc README.gz NEWS.gz
+%attr(755,root,root) %{_bindir}/hesinfo
 %{_libdir}/libhesiod.so.*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
 %files devel
-%defattr(-,root,root)
-%{_libdir}/libhesiod.a
+%defattr(644,root,root,755)
 %{_libdir}/libhesiod.so
 %{_includedir}/hesiod.h
 %{_mandir}/man3/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libhesiod.a

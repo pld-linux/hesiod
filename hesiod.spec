@@ -71,7 +71,7 @@ for manpage in *.3; do
 done
 
 %build
-%configure 
+%configure
 %{__make}
 
 %install

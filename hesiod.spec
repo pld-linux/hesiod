@@ -28,7 +28,7 @@ komputerami.
 
 %package devel
 Summary:	Headers and development documentation for Hesiod
-Summary(pl):	Pliki nag³ówkowe i dokumentacja programisty do hesiod.
+Summary(pl):	Pliki nag³ówkowe i dokumentacja programisty do hesiod
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 

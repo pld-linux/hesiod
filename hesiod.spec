@@ -10,7 +10,7 @@ Patch0:		%{name}-3.0.2-shlib.patch
 Patch1:		%{name}-3.0.2-env.patch
 Patch2:		%{name}-3.0.2-str.patch
 Group:		Libraries
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Hesiod is a system which uses existing DNS functionality to provide

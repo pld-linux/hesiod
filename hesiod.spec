@@ -5,6 +5,7 @@ Version:	3.0.2
 Release:	15
 License:	MIT
 Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz
+# Source0-md5:	0362311e80fb1e029a1588cbbd09ad57
 Patch0:		%{name}-3.0.2-shlib.patch
 Patch1:		%{name}-3.0.2-env.patch
 Patch2:		%{name}-3.0.2-str.patch

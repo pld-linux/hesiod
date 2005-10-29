@@ -72,7 +72,7 @@ for manpage in *.3; do
 done
 
 %build
-%configure
+%configure2_13
 %{__make}
 
 %install
@@ -89,13 +89,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README NEWS
 %attr(755,root,root) %{_bindir}/hesinfo
-%{_libdir}/libhesiod.so.*
+%attr(755,root,root) %{_libdir}/libhesiod.so.*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libhesiod.so
+%attr(755,root,root) %{_libdir}/libhesiod.so
 %{_includedir}/hesiod.h
 %{_mandir}/man3/*
 

@@ -1,5 +1,5 @@
 Summary:	Hesiod libraries and sample programs
-Summary(pl):	Biblioteki i programy przyk³adowe do hesiod
+Summary(pl.UTF-8):   Biblioteki i programy przykÅ‚adowe do hesiod
 Name:		hesiod
 Version:	3.0.2
 Release:	15
@@ -19,17 +19,17 @@ often used to distribute information kept in the /etc/passwd,
 /etc/group, and /etc/printcap files over a network, eliminating the
 need to ensure synchronize the files among multiple hosts.
 
-%description -l pl
-Hesiod jest systemem u¿ywaj±cym istniej±cej funkcjonalno¶ci DNS do
-zapewniania dostêpu do baz informacji zmieniaj±cych siê niezbyt
-czêsto. Jest przewa¿nie u¿ywany do rozprowadzania informacji
+%description -l pl.UTF-8
+Hesiod jest systemem uÅ¼ywajÄ…cym istniejÄ…cej funkcjonalnoÅ›ci DNS do
+zapewniania dostÄ™pu do baz informacji zmieniajÄ…cych siÄ™ niezbyt
+czÄ™sto. Jest przewaÅ¼nie uÅ¼ywany do rozprowadzania informacji
 trzymanych w /etc/passwd, /etc/group, /etc/printcap i podobnych po
-sieci, eliminuj±c potrzebê synchronizacji plików miêdzy wieloma
+sieci, eliminujÄ…c potrzebÄ™ synchronizacji plikÃ³w miÄ™dzy wieloma
 komputerami.
 
 %package devel
 Summary:	Headers and development documentation for Hesiod
-Summary(pl):	Pliki nag³ówkowe i dokumentacja programisty do hesiod
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i dokumentacja programisty do hesiod
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -37,21 +37,21 @@ Requires:	%{name} = %{version}-%{release}
 This package contains the header files required for building programs
 which use Hesiod and some devolopment documentation.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe potrzebne do budowania programów
-u¿ywaj±cych Hesiod oraz dokumentacjê programisty.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe potrzebne do budowania programÃ³w
+uÅ¼ywajÄ…cych Hesiod oraz dokumentacjÄ™ programisty.
 
 %package static
 Summary:	Hesiod static library
-Summary(pl):	Biblioteka statyczna Hesiod
+Summary(pl.UTF-8):   Biblioteka statyczna Hesiod
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains static version of Hesiod library.
 
-%description static -l pl
-Ten pakiet zawiera statyczn± wersjê biblioteki Hesiod.
+%description static -l pl.UTF-8
+Ten pakiet zawiera statycznÄ… wersjÄ™ biblioteki Hesiod.
 
 %prep
 %setup -q

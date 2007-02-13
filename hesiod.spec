@@ -1,5 +1,5 @@
 Summary:	Hesiod libraries and sample programs
-Summary(pl.UTF-8):   Biblioteki i programy przykładowe do hesiod
+Summary(pl.UTF-8):	Biblioteki i programy przykładowe do hesiod
 Name:		hesiod
 Version:	3.0.2
 Release:	15
@@ -29,7 +29,7 @@ komputerami.
 
 %package devel
 Summary:	Headers and development documentation for Hesiod
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja programisty do hesiod
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja programisty do hesiod
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -43,7 +43,7 @@ używających Hesiod oraz dokumentację programisty.
 
 %package static
 Summary:	Hesiod static library
-Summary(pl.UTF-8):   Biblioteka statyczna Hesiod
+Summary(pl.UTF-8):	Biblioteka statyczna Hesiod
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 

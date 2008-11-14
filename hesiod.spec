@@ -9,6 +9,8 @@ Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz
 Patch0:		%{name}-3.0.2-shlib.patch
 Patch1:		%{name}-3.0.2-env.patch
 Patch2:		%{name}-3.0.2-str.patch
+Patch3:		%{name}-ac.patch
+BuildRequires:	autoconf
 Group:		Libraries
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +60,7 @@ Ten pakiet zawiera statyczną wersję biblioteki Hesiod.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 for manpage in *.3; do
 	if grep -q '^\.so man3/hesiod.3' $manpage ; then
@@ -72,6 +75,7 @@ for manpage in *.3; do
 done
 
 %build
+%{__autoconf}
 %configure2_13
 %{__make}
 

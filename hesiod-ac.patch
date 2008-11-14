@@ -5,7 +5,7 @@
  AC_EGREP_HEADER(pw_expire, pwd.h, AC_DEFINE(HAVE_PW_EXPIRE))
  
 -AC_CHECK_FUNC(res_mkquery, :, [AC_CHECK_LIB(resolv, res_mkquery)])
-+AC_CHECK_LIB([resolv],[__res_mkquery])
++AC_SEARCH_LIBS([res_mkquery], [resolv],,[AC_SEARCH_LIBS([__res_mkquery], [resolv])])
  AC_CHECK_FUNCS(strerror_r)
  
  AC_CONFIG_HEADER(config.h)

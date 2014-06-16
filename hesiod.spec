@@ -1,17 +1,14 @@
 Summary:	Hesiod libraries and sample programs
 Summary(pl.UTF-8):	Biblioteki i programy przykładowe do hesiod
 Name:		hesiod
-Version:	3.0.2
-Release:	15
-License:	MIT
+Version:	3.2.1
+Release:	1
+License:	BSD
 Group:		Libraries
 Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz
-# Source0-md5:	0362311e80fb1e029a1588cbbd09ad57
-Patch0:		%{name}-3.0.2-shlib.patch
-Patch1:		%{name}-3.0.2-env.patch
-Patch2:		%{name}-3.0.2-str.patch
-Patch3:		%{name}-ac.patch
-BuildRequires:	autoconf
+# Source0-md5:	d8fe6d7d081c9c14d5d3d8a466998eeb
+BuildRequires:	libidn-devel
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,6 +31,7 @@ Summary:	Headers and development documentation for Hesiod
 Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja programisty do hesiod
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libidn-devel
 
 %description devel
 This package contains the header files required for building programs
@@ -57,31 +55,21 @@ Ten pakiet zawiera statyczną wersję biblioteki Hesiod.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
-for manpage in *.3; do
-	if grep -q '^\.so man3/hesiod.3' $manpage ; then
-		echo .so hesiod.3 > $manpage
-	elif grep -q '^\.so man3/hesiod_getmailhost.3' $manpage ; then
-		echo .so hesiod_getmailhost.3 > $manpage
-	elif grep -q '^\.so man3/hesiod_getpwnam.3' $manpage ; then
-		echo .so hesiod_getpwnam.3 > $manpage
-	elif grep -q '^\.so man3/hesiod_getservbyname.3' $manpage ; then
-		echo .so hesiod_getservbyname.3 > $manpage
-	fi
-done
+grep -l '^\.so man3/' man/*.3 | xargs %{__sed} -i -e '1s,man3/,,;2,$d'
 
 %build
-%{__autoconf}
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libhesiod.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,17 +79,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS
+%doc COPYING NEWS README
 %attr(755,root,root) %{_bindir}/hesinfo
-%attr(755,root,root) %{_libdir}/libhesiod.so.*
-%{_mandir}/man1/*
-%{_mandir}/man5/*
+%attr(755,root,root) %{_libdir}/libhesiod.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libhesiod.so.0
+%{_mandir}/man1/hesinfo.1*
+%{_mandir}/man5/hesiod.conf.5*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libhesiod.so
 %{_includedir}/hesiod.h
-%{_mandir}/man3/*
+%{_pkgconfigdir}/hesiod.pc
+%{_mandir}/man3/hesiod*.3*
 
 %files static
 %defattr(644,root,root,755)

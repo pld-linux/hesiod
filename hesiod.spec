@@ -2,7 +2,7 @@ Summary:	Hesiod libraries and sample programs
 Summary(pl.UTF-8):	Biblioteki i programy przykładowe do hesiod
 Name:		hesiod
 Version:	3.2.1
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz

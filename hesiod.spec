@@ -5,8 +5,11 @@ Version:	3.2.1
 Release:	3
 License:	BSD
 Group:		Libraries
+#Source0Download: https://github.com/achernya/hesiod/releases
+#TODO: Source0:	https://github.com/achernya/hesiod/archive/%{name}-%{version}.tar.gz
 Source0:	ftp://athena-dist.mit.edu/pub/ATHENA/hesiod/%{name}-%{version}.tar.gz
 # Source0-md5:	d8fe6d7d081c9c14d5d3d8a466998eeb
+URL:		https://github.com/achernya/hesiod
 BuildRequires:	libidn-devel
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

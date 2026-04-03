@@ -2,7 +2,7 @@ Summary:	Hesiod libraries and sample programs
 Summary(pl.UTF-8):	Biblioteki i programy przykładowe do hesiod
 Name:		hesiod
 Version:	3.2.1
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/achernya/hesiod/releases
